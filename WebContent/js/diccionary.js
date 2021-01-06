@@ -33,17 +33,17 @@ const LOCATIONS = {
 				{
 					'name': 'Egypt',
 					'price': 0,
-					'image': '/images/countries/egypt.jpg'
+					'image': 'images/countries/egypt.jpg'
 				},
 				{
 					'name': 'Nigeria',
 					'price': 0,
-					'image': '/images/countries/nigeria.jpg'
+					'image': 'images/countries/nigeria.jpg'
 				},
 				{
 					'name': 'Tanzania',
 					'price': 0,
-					'image': '/images/countries/tanzania.jpg'
+					'image': 'images/countries/tanzania.jpg'
 				},
 			]
 		},
@@ -53,27 +53,27 @@ const LOCATIONS = {
 				{
 					'name': 'Bangladesh',
 					'price': 0,
-					'image': '/images/countries/bangladesh.jpg'
+					'image': 'images/countries/bangladesh.jpg'
 				},
 				{
 					'name': 'China',
 					'price': 0,
-					'image': '/images/countries/china.jpg'
+					'image': 'images/countries/china.jpg'
 				},
 				{
 					'name': 'India',
 					'price': 0,
-					'image': '/images/countries/india.jpg'
+					'image': 'images/countries/india.jpg'
 				},
 				{
 					'name': 'Japan',
 					'price': 0,
-					'image': '/images/countries/japan.jpg'
+					'image': 'images/countries/japan.jpg'
 				},
 				{
 					'name': 'Turkey',
 					'price': 0,
-					'image': '/images/countries/turkey.jpg'
+					'image': 'images/countries/turkey.jpg'
 				},
 			]
 		},
@@ -83,12 +83,12 @@ const LOCATIONS = {
 				{
 					'name': 'Australia',
 					'price': 0,
-					'image': '/images/countries/australia.jpg'
+					'image': 'images/countries/australia.jpg'
 				},
 				{
 					'name': 'New Zealand',
 					'price': 0,
-					'image': '/images/countries/new-zealand.jpg'
+					'image': 'images/countries/new-zealand.jpg'
 				}
 			]
 		},
@@ -98,32 +98,32 @@ const LOCATIONS = {
 				{
 					'name': 'France',
 					'price': 0,
-					'image': '/images/countries/france.jpg'
+					'image': 'images/countries/france.jpg'
 				},
 				{
 					'name': 'Germany',
 					'price': 0,
-					'image': '/images/countries/germany.jpg'
+					'image': 'images/countries/germany.jpg'
 				},
 				{
 					'name': 'Italy',
 					'price': 0,
-					'image': '/images/countries/italy.jpg'
+					'image': 'images/countries/italy.jpg'
 				},
 				{
 					'name': 'Norway',
 					'price': 0,
-					'image': '/images/countries/norway.jpg'
+					'image': 'images/countries/norway.jpg'
 				},
 				{
 					'name': 'Spain',
 					'price': 0,
-					'image': '/images/countries/spain.jpg'
+					'image': 'images/countries/spain.jpg'
 				},
 				{
 					'name': 'United Kingdom',
 					'price': 0,
-					'image': '/images/countries/united-kingdom.jpg'
+					'image': 'images/countries/united-kingdom.jpg'
 				},
 			]
 		},
@@ -133,17 +133,17 @@ const LOCATIONS = {
 				{
 					'name': 'Canada',
 					'price': 0,
-					'image': '/images/countries/canada.jpg'
+					'image': 'images/countries/canada.jpg'
 				},
 				{
 					'name': 'Mexico',
 					'price': 0,
-					'image': '/images/countries/mexico.jpg'
+					'image': 'images/countries/mexico.jpg'
 				},
 				{
 					'name': 'U.S.A',
 					'price': 0,
-					'image': '/images/countries/usa.jpg'
+					'image': 'images/countries/usa.jpg'
 				},
 			]
 		},
@@ -153,12 +153,12 @@ const LOCATIONS = {
 				{
 					'name': 'Brazil',
 					'price': 0,
-					'image': '/images/countries/brazil.jpg'
+					'image': 'images/countries/brazil.jpg'
 				},
 				{
 					'name': 'Peru',
 					'price': 0,
-					'image': '/images/countries/peru.jpg'
+					'image': 'images/countries/peru.jpg'
 				},
 			]
 		}
