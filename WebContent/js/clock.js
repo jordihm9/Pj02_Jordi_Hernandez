@@ -17,15 +17,21 @@ function clock() {
 		// get the actual date and time
 		let now = new Date();
 
-		// get the hour, minutes and seconds, append a 0 before if the number is less than 10 to force always 2 digits
-		let h = now.getHours()		< 10 ? '0' + now.getHours()		: now.getHours();
-		let m = now.getMinutes() 	< 10 ? '0' + now.getMinutes() 	: now.getMinutes();
-		let s = now.getSeconds()	< 10 ? '0' + now.getSeconds() 	: now.getSeconds();
-
-		// get the year, month and day of week
+		// get the hour, minutes and seconds
+		let h		= now.getHours();
+		let m		= now.getMinutes();
+		let s		= now.getSeconds();
+		// get the year, month and day of month
 		let year 	= now.getFullYear();
-		let month 	= now.getMonth();
+		let month 	= now.getMonth()+1; // month starts at 0, so increment by 1
 		let day		= now.getDate();
+
+		// append 0 before if the number is less than 10 to force 2 digits
+		h			= h 	< 10 ? '0' + h		: h;
+		m			= m 	< 10 ? '0' + m 		: m;
+		s			= s 	< 10 ? '0' + s 		: s;
+		month 		= month	< 10 ? '0' + month	: month;
+		day			= day	< 10 ? '0' + day	: day;
 
 		// update the clock element in the document
 		CLOCK.innerHTML = `${h}:${m}:${s}<br>${day}/${month}/${year}`;
