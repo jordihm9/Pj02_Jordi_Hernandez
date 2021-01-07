@@ -5,6 +5,7 @@ const CONTINENTS_SELECT = document.querySelector('#continentDst');
 const COUNTRIES_SELECT = document.querySelector('#countryDst');
 const PRICE = document.querySelector('#price');
 const DST_PREVIEW = document.querySelector('#destination-preview');
+const START_DATE = document.querySelector('#startDate');
 
 // when the windows finish loading, execute init function
 window.onload = init();
@@ -41,6 +42,9 @@ function setDefaults() {
 	COUNTRIES_SELECT[0].setAttribute('disabled', '');
 
 	addContinentsOptions();
+
+	// set the start date and end date the system date
+	START_DATE.valueAsDate = new Date();
 }
 
 /**
