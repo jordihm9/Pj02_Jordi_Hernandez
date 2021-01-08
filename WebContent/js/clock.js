@@ -8,6 +8,8 @@ CLOCK.addEventListener('dblclick', changeFormat);
 
 // 12h or 24h format for the clock
 let format;
+// day/night: a.m or p.m
+let dn = '';
 
 /**
  * Get the actual time and date and update the clock element in the document every 100 miliseconds
@@ -26,6 +28,15 @@ function clock() {
 		let month 	= now.getMonth()+1; // month starts at 0, so increment by 1
 		let day		= now.getDate();
 
+		// check if the format is 12h
+		if (format === '12h') {
+			if (h > 12) h-=12;
+			// set AM or PM
+			dn = h <= 12 ? 'a.m' : 'p.m';
+		} else {
+			dn = '';
+		}
+
 		// append 0 before if the number is less than 10 to force 2 digits
 		h			= h 	< 10 ? '0' + h		: h;
 		m			= m 	< 10 ? '0' + m 		: m;
@@ -34,7 +45,7 @@ function clock() {
 		day			= day	< 10 ? '0' + day	: day;
 
 		// update the clock element in the document
-		CLOCK.innerHTML = `${h}:${m}:${s}<br>${day}/${month}/${year}`;
+		CLOCK.innerHTML = `${h}:${m}:${s} ${dn}<br>${day}/${month}/${year}`;
 	}, 100);
 }
 
@@ -42,5 +53,5 @@ function clock() {
  * Change clock format from 12h to 24h and viceversa
  */
 function changeFormat() {
-	console.log('Changing clock format');
+	format = format === '12h' ? '24h' : '12h';
 }
