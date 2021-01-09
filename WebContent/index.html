@@ -25,8 +25,8 @@
 		<section id="reservation-form">
 			<form method="post">
 				<!-- CLIENT INFORMATION -->
-				<div id="client-info">
-					<span>Client Information</span>
+				<fieldset id="client-info">
+					<legend>Client Information</legend>
 					<div>
 						<div class="inputs-group">
 							<div class="input">
@@ -49,62 +49,47 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</fieldset>
 
 				<!-- RESERVATION INFORMATION -->
-				<div id="reservation-info">
-					<span>Reservation Information</span>
+				<fieldset id="reservation-info">
+					<legend>Reservation Information</legend>
 					<div>
-						<div class="inputs-group">
-							<div class="input">
-								<label for="startDate">Start Date</label>
-								<input type="date" name="startDate" id="startDate">
-							</div>
-							<div class="input">
-								<label for="endDate">End Date</label>
-								<input type="date" name="endDate" id="endDate">
-							</div>
+						<div class="input">
+							<label for="startDate">Date</label>
+							<input type="date" name="startDate" id="startDate">
 						</div>
 						<div class="inputs-group">
 							<div class="inputs-group">
 								<label>Destination</label>
 								<div class="input">
-									<label for="continentDst">Continent</label>
+									<!-- <label for="continentDst">Continent</label> -->
 									<select name="continentDst" id="continentDst"></select>
 								</div>
 								<div class="input">
-									<label for="countryDst">Country</label>
+									<!-- <label for="countryDst">Country</label> -->
 									<select name="countryDst" id="countryDst"></select>
 								</div>
 							</div>
 						</div>
-						<div class="inputs-group">
-							<div class="inputs-group">
-								<label>Discount</label>
-								<div class="input">
-									<input type="radio" name="discount" id="discount0" value="none" checked>
-									<label for="discount0">None</label>
-								</div>
-								<div class="input">
-									<input type="radio" name="discount" id="discount10" value="10">
-									<label for="discount10">10%</label>
-								</div>
-								<div class="input">
-									<input type="radio" name="discount" id="discount15" value="15">
-									<label for="discount15">15%</label>
-								</div>
-								<div class="input">
-									<input type="radio" name="discount" id="discount20" value="20">
-									<label for="discount20">20%</label>
-								</div>
-							</div>
-							<div class="input">
-								<label for="price">Total Price</label>
-								<input type="text" name="price" id="price" disabled>
+						<div class="input">
+							<div id="numOfPeople">
+								<div id="decrease" class="btn">-</div>
+								<input type="text" name="people" id="people" readonly>
+								<div id="increase" class="btn">+</div>
 							</div>
 						</div>
+						<div class="input">
+							<label for="price">Total Price</label>
+							<input type="text" name="price" id="price" readonly>
+						</div>
 					</div>
-				</div>
+
+					<!-- DESTINATION IMAGE PREVIEW -->
+					<div>
+						<img id="destination-preview" alt="destination preview"></img>
+					</div>
+				</fieldset>
 
 				<!-- SUBMIT -->
 				<div id="submit">
@@ -116,20 +101,17 @@
 		<aside>
 			<div id="clock"></div>
 
-			<!-- DESTINATION IMAGE PREVIEW -->
-			<div>
-				<img id="destination-preview" alt="destination preview"></img>
-			</div>
+
 		</aside>
 
 		<!-- LIST OF RESERVATIONS -->
 		<section id="reservation-list"></section>
-		
+
 	</main>
 
 	<!-- FOOTER -->
 	<footer></footer>
-	
+
 </body>
 
 </html>
