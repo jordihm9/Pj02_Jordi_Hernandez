@@ -1,37 +1,31 @@
 'use strict'
 
-// Elements from the document:
-const CONTINENTS_SELECT = document.querySelector('#continentDst');
-const COUNTRIES_SELECT = document.querySelector('#countryDst');
-const PRICE = document.querySelector('#price');
-const DST_PREVIEW = document.querySelector('#destination-preview');
-const START_DATE = document.querySelector('#startDate');
-
 // when the windows finish loading, execute init function
 window.onload = init();
 
 function init() {
 	clock();
 	setDefaults();
+
+	// Event Listeners
+	
+	// When a continent option has been chosen or changed
+	CONTINENTS_SELECT.addEventListener('change', () => {
+		let continent = CONTINENTS_SELECT.value; // get the continent selected
+		addCountriesOptions(continent); // update the countries options
+
+		let country = COUNTRIES_SELECT.value; // get the country selected
+		updateCountryInfo(continent, country); // update the country information in document
+	})
+
+	// When a country option has been chosen or changed
+	COUNTRIES_SELECT.addEventListener('change', () => {
+		let continent = CONTINENTS_SELECT.value; // get the continent selected
+		let country = COUNTRIES_SELECT.value; // get the country selected
+		updateCountryInfo(continent, country); // update the country information in document
+	})
+
 }
-
-// Event Listeners
-
-// When a continent option has been chosen or changed
-CONTINENTS_SELECT.addEventListener('change', ()=> {
-	let continent = CONTINENTS_SELECT.value; // get the continent selected
-	addCountriesOptions(continent); // update the countries options
-
-	let country = COUNTRIES_SELECT.value; // get the country selected
-	updateCountryInfo(continent, country); // update the country information in document
-})
-
-// When a country option has been chosen or changed
-COUNTRIES_SELECT.addEventListener('change', ()=> {
-	let continent = CONTINENTS_SELECT.value; // get the continent selected
-	let country = COUNTRIES_SELECT.value; // get the country selected
-	updateCountryInfo(continent, country); // update the country information in document
-})
 
 function setDefaults() {
 	// add the default option not selectable of the continents list
@@ -44,7 +38,7 @@ function setDefaults() {
 	addContinentsOptions();
 
 	// set the start date and end date the system date
-	START_DATE.valueAsDate = new Date();
+	DATE.valueAsDate = new Date();
 }
 
 /**
@@ -65,7 +59,7 @@ function addContinentsOptions() {
 function addCountriesOptions(continent) {
 	// remove all the existing countries options unless the first one (the default one)
 	while (COUNTRIES_SELECT.options.length > 1) {
-		COUNTRIES_SELECT.remove(COUNTRIES_SELECT.options.length -1);
+		COUNTRIES_SELECT.remove(COUNTRIES_SELECT.options.length - 1);
 	}
 
 	let countries = getCountriesOfContinent(continent);
@@ -73,7 +67,7 @@ function addCountriesOptions(continent) {
 	// check if the continent was found by checking if countries is not empty
 	if (countries !== undefined) {
 		// loop over each country in the array of countries from the continent
-		for (const country  of countries) {
+		for (const country of countries) {
 			// add the name of the country in the countries select element
 			COUNTRIES_SELECT.append(new Option(country.name));
 		}
@@ -100,7 +94,7 @@ function updateCountryInfo(continent, country) {
 	// check if the continent was found by checking if countries is not empty
 	if (countries !== undefined) {
 		// search and get the country
-		for (const c  of countries) {
+		for (const c of countries) {
 			if (c.name === country) {
 				country = c;
 			}
