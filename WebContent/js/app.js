@@ -25,6 +25,15 @@ function init() {
 		updateCountryInfo(continent, country); // update the country information in document
 	})
 
+	// decrease and increase the number of people
+	document.querySelector('#decrease').addEventListener('click', ()=> {
+		editPeople('decrease');
+	})
+	
+	// decrease and increase the number of people
+	document.querySelector('#increase').addEventListener('click', ()=> {
+		editPeople('increase');
+	})
 }
 
 function setDefaults() {
@@ -39,6 +48,9 @@ function setDefaults() {
 
 	// set the start date and end date the system date
 	DATE.valueAsDate = new Date();
+
+	// set the default for the people
+	PEOPLE.value = 1;
 }
 
 /**
@@ -133,4 +145,22 @@ function getCountriesOfContinent(continent) {
 	}
 
 	return countries;
+}
+
+/**
+ * Decrease or increase
+ * @param {string} operation decrease or increase
+ */
+function editPeople(operation) {
+	let people = PEOPLE.value; // get the actual value
+
+	// increase or decrease depending on the operation
+	if (operation === 'decrease') {
+		people--;
+	} else if (operation === 'increase') {
+		people++;
+	}
+
+	// check that minim number posible is 1
+	if (people >= 1) PEOPLE.value = people; // change with the new value
 }
