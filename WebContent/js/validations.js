@@ -1,5 +1,82 @@
 'use strict'
 
+CLIENT_NAME.addEventListener('blur', ()=> {
+	try {
+		checkRequired(CLIENT_NAME, 'Name');
+		CLIENT_NAME.classList.remove('error'); // remove the class 'error'
+	}
+	catch (error) {
+		console.log(error.message); // print error in console
+		CLIENT_NAME.classList.add('error'); // add the class 'error' to style it
+	}
+})
+
+CLIENT_LASTNAME.addEventListener('blur', ()=> {
+	try {
+		checkRequired(CLIENT_LASTNAME, 'Lastname');
+		CLIENT_LASTNAME.classList.remove('error'); // remove the class 'error'
+	}
+	catch (error) {
+		console.log(error.message); // print error in console
+		CLIENT_LASTNAME.classList.add('error'); // add the class 'error' to style it
+	}
+})
+
+DNI.addEventListener('blur', ()=> {
+	try {
+		checkDNI();
+		DNI.classList.remove('error');
+	}
+	catch (error) {
+		console.log(error.message);
+		DNI.classList.remove('error');
+	}
+})
+
+PHONE.addEventListener('blur', ()=> {
+	try {
+		checkPhone();
+		PHONE.classList.remove('error');
+	}
+	catch (error) {
+		console.log(error.message);
+		PHONE.classList.add('error');
+	}
+})
+
+DATE.addEventListener('blur', ()=> {
+	try {
+		checkRequired(DATE, 'Date');
+		DATE.classList.remove('error');
+	}
+	catch (error) {
+		console.log(error.message)
+		DATE.classList.add('error');
+	}
+})
+
+CONTINENTS_SELECT.addEventListener('blur', ()=> {
+	try {
+		checkRequired(CONTINENTS_SELECT, 'Continent');
+		CONTINENTS_SELECT.classList.remove('error');
+	}
+	catch (error) {
+		console.log(error.message);
+		CONTINENTS_SELECT.classList.add('error');
+	}
+})
+
+COUNTRIES_SELECT.addEventListener('blur', ()=> {
+	try {
+		checkRequired(COUNTRIES_SELECT, 'Country');
+		COUNTRIES_SELECT.classList.remove('error');
+	}
+	catch (error) {
+		console.log(error.message);
+		COUNTRIES_SELECT.classList.add('error');
+	}
+})
+
 /**
  * Check if the value from the element given is empty or not.
  * @param {object} e element from the document
