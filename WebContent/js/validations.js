@@ -29,7 +29,7 @@ DNI.addEventListener('blur', ()=> {
 	}
 	catch (error) {
 		console.log(error.message);
-		DNI.classList.remove('error');
+		DNI.classList.add('error');
 	}
 })
 
