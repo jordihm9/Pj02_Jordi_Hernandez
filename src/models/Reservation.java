@@ -7,17 +7,19 @@ public class Reservation {
 	private Date date;
 	private String continentDst;
 	private String countryDst;
+	private int people;
 	private double price;
 	private Client client;
 
 	// ------------------
 	// CONSTRUCTOR
 	// ------------------
-	public Reservation(int id, Date date, String continentDst, String countryDst, double price, Client client) {
+	public Reservation(int id, Date date, String continentDst, String countryDst, int people, double price, Client client) {
 		setId(id);
 		setDate(date);
 		setContinentDst(continentDst);
 		setCountryDst(countryDst);
+		setPeople(people);
 		setPrice(price);
 		setClient(client);
 	}
@@ -36,6 +38,9 @@ public class Reservation {
 	}
 	public void setCountryDst(String countryDst) {
 		this.countryDst = countryDst;
+	}
+	public void setPeople(int people) {
+		this.people = people;
 	}
 	public void setPrice(double price) {
 		this.price = price;
@@ -58,6 +63,9 @@ public class Reservation {
 	}
 	public String getCountryDst() {
 		return this.countryDst;
+	}
+	public int getPeople() {
+		return this.people;
 	}
 	public double getPrice() {
 		return this.price;
