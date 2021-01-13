@@ -18,7 +18,7 @@ import models.Reservation;
 /**
  * Servlet implementation class Home
  */
-@WebServlet("/")
+@WebServlet("")
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -51,7 +51,7 @@ public class Home extends HttpServlet {
 			String phone 	= request.getParameter("phone");
 			
 			// create an object client
-			Client client = new Client(name, lastname, dni, phone);
+			Client client = new Client(dni, name, lastname, phone);
 		
 			// reservation part
 			Date date 			= new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date"));			
