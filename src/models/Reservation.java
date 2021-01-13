@@ -3,7 +3,6 @@ package models;
 import java.util.Date;
 
 public class Reservation {
-	private int id;
 	private Date date;
 	private String continentDst;
 	private String countryDst;
@@ -14,8 +13,7 @@ public class Reservation {
 	// ------------------
 	// CONSTRUCTOR
 	// ------------------
-	public Reservation(int id, Date date, String continentDst, String countryDst, int people, double price, Client client) {
-		setId(id);
+	public Reservation(Date date, String continentDst, String countryDst, int people, double price, Client client) {
 		setDate(date);
 		setContinentDst(continentDst);
 		setCountryDst(countryDst);
@@ -27,9 +25,6 @@ public class Reservation {
 	// ------------------
 	// SETTERS
 	// ------------------
-	public void setId(int id) {
-		this.id = id;
-	}
 	public void setDate(Date date) {
 		this.date = date;
 	}
@@ -52,9 +47,6 @@ public class Reservation {
 	// ------------------
 	// GETTERS
 	// ------------------
-	public int getId() {
-		return this.id;
-	}
 	public Date getDate() {
 		return this.date;
 	}

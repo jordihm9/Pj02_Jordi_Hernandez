@@ -11,7 +11,14 @@ public class Client {
 	// CONSTRUCTOR
 	// ------------------
 	public Client(int id, String dni, String name, String lastname, String phone) {
-		setId(id);
+		this.id = id;
+		setDni(dni);
+		setName(name);
+		setLastname(lastname);
+		setPhone(phone);
+	}
+
+	public Client(String dni, String name, String lastname, String phone) {
 		setDni(dni);
 		setName(name);
 		setLastname(lastname);
@@ -21,9 +28,6 @@ public class Client {
 	// ------------------
 	// SETTERS
 	// ------------------
-	public void setId(int id) {
-		this.id = id;
-	}
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
