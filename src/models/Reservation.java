@@ -13,10 +13,10 @@ public class Reservation {
 	// ------------------
 	// CONSTRUCTOR
 	// ------------------
-	public Reservation(Date date, String continentDst, String countryDst, int people, double price, Client client) {
-		setDate(date);
+	public Reservation(String continentDst, String countryDst, Date date, int people, double price, Client client) {
 		setContinentDst(continentDst);
 		setCountryDst(countryDst);
+		setDate(date);
 		setPeople(people);
 		setPrice(price);
 		setClient(client);
