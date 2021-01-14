@@ -49,11 +49,9 @@ public class Home extends HttpServlet {
 			// create a client object with the information from the request
 			Client client = new Client(request);
 
-			// search and get in the database if a user with the dni specified exists
-			client = ClientDAO.selectByDni(client.getDni());
-
-			// check if the client in the database was found
-			if (client == null) {
+			// check if the client in the database was found searching
+			// in the database if a user with the dni specified exists
+			if (ClientDAO.selectByDni(client.getDni()) == null) {
 				// insert the new client
 				ClientDAO.insert(client);
 			}
@@ -63,8 +61,11 @@ public class Home extends HttpServlet {
 			// -------------------
 			// RESERVATION PART
 			// -------------------
+			// create a new reservation with the request values
+			Reservation reservation = new Reservation(request);
+			reservation.setClient(client); // set the client that made the reservation (has id set)
 			// insert to the database a new reservation with the information from the request
-			ReservationDAO.insert(new Reservation(request));
+			ReservationDAO.insert(reservation);
 		}	
 		catch (SQLException e) {
 			e.printStackTrace();
