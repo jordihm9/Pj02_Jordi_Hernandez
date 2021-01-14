@@ -1,6 +1,7 @@
 package models;
 
-import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Date;
 
 public class Reservation {
 	private Date date;
@@ -20,6 +21,14 @@ public class Reservation {
 		setPeople(people);
 		setPrice(price);
 		setClient(client);
+	}
+
+	public Reservation(HttpServletRequest request) {
+		setDate(Date.valueOf(request.getParameter("date")));
+		setContinentDst(request.getParameter("continentDst"));
+		setCountryDst(request.getParameter("countryDst"));
+		setPeople(Integer.parseInt(request.getParameter("people")));
+		setPrice(Double.parseDouble(request.getParameter("price")));
 	}
 
 	// ------------------

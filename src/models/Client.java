@@ -1,5 +1,7 @@
 package models;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class Client {
 	int id;
 	String dni;
@@ -8,8 +10,9 @@ public class Client {
 	String phone;
 
 	// ------------------
-	// CONSTRUCTOR
+	// CONSTRUCTORS
 	// ------------------
+	// Constructor with id
 	public Client(int id, String dni, String name, String lastname, String phone) {
 		this.id = id;
 		setDni(dni);
@@ -18,11 +21,19 @@ public class Client {
 		setPhone(phone);
 	}
 
+	// Constructor without id
 	public Client(String dni, String name, String lastname, String phone) {
 		setDni(dni);
 		setName(name);
 		setLastname(lastname);
 		setPhone(phone);
+	}
+
+	public Client(HttpServletRequest request) {
+		setName(request.getParameter("clientName"));
+		setLastname(request.getParameter("clientLastname"));
+		setDni(request.getParameter("dni"));
+		setPhone(request.getParameter("phone"));
 	}
 
 	// ------------------

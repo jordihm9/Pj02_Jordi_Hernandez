@@ -2,9 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Client;
 import models.Reservation;
+import dao.ClientDAO;
+import dao.ReservationDAO;
 
 /**
  * Servlet implementation class Home
@@ -43,37 +43,34 @@ public class Home extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try  {
-			// get the values from the form
-			// client part
-			String name 	= request.getParameter("clientName");
-			String lastname = request.getParameter("clientLastname");
-			String dni 		= request.getParameter("dni");
-			String phone 	= request.getParameter("phone");
+			// -------------------
+			// CLIENT PART
+			// -------------------
+			// create a client object with the information from the request
+			Client client = new Client(request);
+
+			// search and get in the database if a user with the dni specified exists
+			client = ClientDAO.selectByDni(client.getDni());
+
+			// check if the client in the database was found
+			if (client == null) {
+				// insert the new client
+				ClientDAO.insert(client);
+			}
+			// search and get the user in the database to get the id that was given
+			client = ClientDAO.selectByDni(client.getDni());
 			
-			// create an object client
-			Client client = new Client(dni, name, lastname, phone);
-		
-			// reservation part
-			Date date 			= new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date"));			
-			String continent 	= request.getParameter("continentDst");
-			String country 		= request.getParameter("countryDst");
-			int people 			= Integer.parseInt(request.getParameter("people"));
-			double price 		= Double.parseDouble(request.getParameter("price"));
-			
-			// create an object reservation
-			Reservation reservation = new Reservation(date, continent, country, people, price, client);
-			
-			// insert data to database
-			dao.ClientDAO.insert(client);
-			dao.ReservationDAO.insert(reservation);
-		}
-		catch (ParseException e) {
-			e.printStackTrace();
-		}
-		catch (SQLException | ClassNotFoundException e) {
+			// -------------------
+			// RESERVATION PART
+			// -------------------
+			// insert to the database a new reservation with the information from the request
+			ReservationDAO.insert(new Reservation(request));
+		}	
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+		// after all return to the view
 		doGet(request, response);
 	}
 
