@@ -13,4 +13,4 @@ const CONTINENTS_SELECT	= document.querySelector('#continentDst');
 const COUNTRIES_SELECT 	= document.querySelector('#countryDst');
 const PEOPLE			= document.querySelector('#people');
 const PRICE				= document.querySelector('#price');
-const DST_PREVIEW		= document.querySelector('#destination-preview');
+const DST_PREVIEW		= document.querySelector('#destination-preview img');
