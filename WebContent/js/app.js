@@ -51,6 +51,8 @@ function setDefaults() {
 
 	// set the default for the people
 	PEOPLE.value = 1;
+	// set default price
+	PRICE.value = 0 + " €";
 }
 
 /**
@@ -91,7 +93,7 @@ function addCountriesOptions(continent) {
 	// select the default option as active
 	COUNTRIES_SELECT.selectedIndex = 0;
 	// remove/clean the price and the country preview
-	PRICE.value = 0;
+	PRICE.value = 0 + " €";
 	DST_PREVIEW.src = '';
 }
 
