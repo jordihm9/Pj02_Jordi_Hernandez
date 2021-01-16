@@ -210,6 +210,11 @@ select {
 
 #destination-preview img {
 	width: 100%;
+	transition: transform 250ms ease;
+}
+
+#destination-preview img:hover {
+	transform: scale(1.2);
 }
 
 #people,
