@@ -47,7 +47,7 @@ public class Reservation {
 		this.people = people;
 	}
 	public void setPrice(double price) {
-		this.price = price;
+		this.price = price * this.people;
 	}
 	public void setClient(Client client) {
 		this.client = client;
