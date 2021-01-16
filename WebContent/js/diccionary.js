@@ -32,17 +32,17 @@ const LOCATIONS = {
 			'countries': [
 				{
 					'name': 'Egypt',
-					'price': 0,
+					'price': 462.00,
 					'image': 'images/countries/egypt.jpg'
 				},
 				{
 					'name': 'Nigeria',
-					'price': 0,
+					'price': 246.00,
 					'image': 'images/countries/nigeria.jpg'
 				},
 				{
 					'name': 'Tanzania',
-					'price': 0,
+					'price': 383.00,
 					'image': 'images/countries/tanzania.jpg'
 				},
 			]
@@ -52,27 +52,27 @@ const LOCATIONS = {
 			'countries': [
 				{
 					'name': 'Bangladesh',
-					'price': 0,
+					'price': 555.00,
 					'image': 'images/countries/bangladesh.jpg'
 				},
 				{
 					'name': 'China',
-					'price': 0,
+					'price': 399.00,
 					'image': 'images/countries/china.jpg'
 				},
 				{
 					'name': 'India',
-					'price': 0,
+					'price': 137.00,
 					'image': 'images/countries/india.jpg'
 				},
 				{
 					'name': 'Japan',
-					'price': 0,
+					'price': 751.00,
 					'image': 'images/countries/japan.jpg'
 				},
 				{
 					'name': 'Turkey',
-					'price': 0,
+					'price': 488.00,
 					'image': 'images/countries/turkey.jpg'
 				},
 			]
@@ -82,12 +82,12 @@ const LOCATIONS = {
 			'countries': [
 				{
 					'name': 'Australia',
-					'price': 0,
+					'price': 945.00,
 					'image': 'images/countries/australia.jpg'
 				},
 				{
 					'name': 'New Zealand',
-					'price': 0,
+					'price': 1031.00,
 					'image': 'images/countries/new-zealand.jpg'
 				}
 			]
@@ -97,32 +97,32 @@ const LOCATIONS = {
 			'countries': [
 				{
 					'name': 'France',
-					'price': 0,
+					'price': 110,
 					'image': 'images/countries/france.jpg'
 				},
 				{
 					'name': 'Germany',
-					'price': 0,
+					'price': 325.00,
 					'image': 'images/countries/germany.jpg'
 				},
 				{
 					'name': 'Italy',
-					'price': 0,
+					'price': 642.00,
 					'image': 'images/countries/italy.jpg'
 				},
 				{
 					'name': 'Norway',
-					'price': 0,
+					'price': 1256.00,
 					'image': 'images/countries/norway.jpg'
 				},
 				{
 					'name': 'Spain',
-					'price': 0,
+					'price': 185.00,
 					'image': 'images/countries/spain.jpg'
 				},
 				{
 					'name': 'United Kingdom',
-					'price': 0,
+					'price': 512.00,
 					'image': 'images/countries/united-kingdom.jpg'
 				},
 			]
@@ -132,17 +132,17 @@ const LOCATIONS = {
 			'countries': [
 				{
 					'name': 'Canada',
-					'price': 0,
+					'price': 963.00,
 					'image': 'images/countries/canada.jpg'
 				},
 				{
 					'name': 'Mexico',
-					'price': 0,
+					'price': 368.00,
 					'image': 'images/countries/mexico.jpg'
 				},
 				{
 					'name': 'U.S.A',
-					'price': 0,
+					'price': 1269.00,
 					'image': 'images/countries/usa.jpg'
 				},
 			]
@@ -152,12 +152,12 @@ const LOCATIONS = {
 			'countries': [
 				{
 					'name': 'Brazil',
-					'price': 0,
+					'price': 644.00,
 					'image': 'images/countries/brazil.jpg'
 				},
 				{
 					'name': 'Peru',
-					'price': 0,
+					'price': 547.00,
 					'image': 'images/countries/peru.jpg'
 				},
 			]
