@@ -11,14 +11,24 @@
 	<script src="js/validations.js" defer></script>
 	<script src="js/app.js" defer></script>
 	<!-- STYLES -->
+	<link rel="stylesheet" href="css/style.css">
 	<!-- FONTS -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<!-- JetBrains Mono: -->
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+	<!-- AbeeZee: -->
+	<link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
 	<title>Wonderfull Travels</title>
 </head>
 
 <body>
 	<!-- HEADER -->
 	<header>
-		<h1>Wonderfull Travels</h1>
+		<nav>
+			<h1 class="brand">Wonderfull Travels</h1>
+			<!-- CLOCK -->
+			<span id="clock" title="Double click to change format 12/24h"></span>
+		</nav>
 	</header>
 
 	<!-- BODY -->
@@ -31,23 +41,23 @@
 					<legend>Client Information</legend>
 					<div>
 						<div class="inputs-group">
-							<div class="input">
+							<div class="input required">
 								<label for="clientName">Name</label>
-								<input type="text" name="clientName" id="clientName">
+								<input type="text" name="clientName" id="clientName" autocomplete="off">
 							</div>
-							<div class="input">
+							<div class="input required">
 								<label for="clientLastname">Lastname</label>
-								<input type="text" name="clientLastname" id="clientLastname">
+								<input type="text" name="clientLastname" id="clientLastname" autocomplete="off">
 							</div>
 						</div>
 						<div class="inputs-group">
-							<div class="input">
+							<div class="input required">
 								<label for="dni">DNI</label>
-								<input type="text" name="dni" id="dni">
+								<input type="text" name="dni" id="dni" autocomplete="off">
 							</div>
-							<div class="input">
+							<div class="input required">
 								<label for="phone">Phone</label>
-								<input type="text" name="phone" id="phone">
+								<input type="text" name="phone" id="phone" autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -57,54 +67,45 @@
 				<fieldset id="reservation-info">
 					<legend>Reservation Information</legend>
 					<div>
-						<div class="input">
+						<div class="input required">
 							<label for="startDate">Date</label>
 							<input type="date" name="date" id="date">
 						</div>
 						<div class="inputs-group">
-							<div class="inputs-group">
+							<div class="input required">
 								<label>Destination</label>
-								<div class="input">
-									<!-- <label for="continentDst">Continent</label> -->
+								<div id="destination" class="input">
 									<select name="continentDst" id="continentDst"></select>
-								</div>
-								<div class="input">
-									<!-- <label for="countryDst">Country</label> -->
 									<select name="countryDst" id="countryDst"></select>
 								</div>
 							</div>
 						</div>
 						<div class="input">
-							<div id="numOfPeople">
+							<div id="numOfPeople" class="inputs-group">
 								<div id="decrease" class="btn">-</div>
-								<input type="text" name="people" id="people" readonly>
+								<input type="text" name="people" id="people" readonly tabindex="-1">
 								<div id="increase" class="btn">+</div>
 							</div>
 						</div>
-						<div class="input">
+						<div>
 							<label for="price">Total Price</label>
-							<input type="text" name="price" id="price" readonly>
+							<input type="text" id="total-price" disabled>
+							<input type="text" name="price" id="price" hidden>
 						</div>
 					</div>
 
 					<!-- DESTINATION IMAGE PREVIEW -->
-					<div>
-						<img id="destination-preview" alt="destination preview"></img>
+					<div id="destination-preview">
+						<img alt="destination preview"></img>
 					</div>
 				</fieldset>
 
 				<!-- SUBMIT -->
 				<div id="submit">
-					<input type="submit" name="saveReservation" value="Save">
+					<input type="submit" name="saveReservation" value="Save" class="btn">
 				</div>
 			</form>
 		</section>
-
-		<aside>
-			<div id="clock"></div>
-
-
-		</aside>
 
 		<!-- LIST OF RESERVATIONS -->
 		<section id="reservation-list"></section>
