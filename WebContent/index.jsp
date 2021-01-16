@@ -1,7 +1,13 @@
+<!-- JSP -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!--  IMPORT JSTL LIBRARY -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+	<title>Wonderfull Travels</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- JAVASCRIPT -->
@@ -18,7 +24,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
 	<!-- AbeeZee: -->
 	<link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
-	<title>Wonderfull Travels</title>
 </head>
 
 <body>
@@ -40,6 +45,24 @@
 				<fieldset id="client-info">
 					<legend>Client Information</legend>
 					<div>
+						<div>
+							<label>Existing client</label>
+							<input type="checkbox" name="clientExists" id="clientExists">
+						</div>
+					</div>
+					<div id="existing-client">
+						<div class="input required">
+							<label for="client">Client</label>
+							<select name="client" id="client">
+								<option disabled>-- Select existing client --</option>
+								<c:forEach var="client" items="${clients}">
+									<option value="${client.id}">${client.lastname}, ${client.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
+					<br><hr>
+					<div id="new-client">
 						<div class="inputs-group">
 							<div class="input required">
 								<label for="clientName">Name</label>

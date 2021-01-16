@@ -8,7 +8,21 @@ function init() {
 	setDefaults();
 
 	// Event Listeners
-	
+	CLIENT_EXISTS.addEventListener('change', ()=> {
+		// check if the checkbox is checked or not
+		let checked = CLIENT_EXISTS.checked;
+		// get all the inputs used to create a new client
+		let clientInputs = document.querySelectorAll('#new-client input');
+
+		// disable or enable the inputs used to create a new client if is checked or not
+		for (const input of clientInputs) {
+			input.disabled = checked;
+		}
+
+		// disable or enable the select client element if is checked or not
+		CLIENT.disabled = !checked;
+	})
+
 	// When a continent option has been chosen or changed
 	CONTINENTS_SELECT.addEventListener('change', () => {
 		let continent = CONTINENTS_SELECT.value; // get the continent selected
@@ -41,11 +55,13 @@ function init() {
 }
 
 function setDefaults() {
+	// existing client select element
+	CLIENT.disabled = true;
 	// add the default option not selectable of the continents list
-	CONTINENTS_SELECT.append(new Option('Select a continent', ''));
+	CONTINENTS_SELECT.append(new Option('-- Select a continent --', ''));
 	CONTINENTS_SELECT[0].setAttribute('disabled', '');
 	// add the default option not selectable of the countries list
-	COUNTRIES_SELECT.append(new Option('Select a country', ''));
+	COUNTRIES_SELECT.append(new Option('-- Select a country --', ''));
 	COUNTRIES_SELECT[0].setAttribute('disabled', '');
 
 	addContinentsOptions();

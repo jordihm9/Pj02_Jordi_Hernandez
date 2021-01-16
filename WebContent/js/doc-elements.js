@@ -2,6 +2,8 @@
 
 // Save in variables most used elements from the document
 // Form Inputs
+const CLIENT_EXISTS		= document.querySelector('#clientExists');
+const CLIENT			= document.querySelector('#client');
 // client side
 const CLIENT_NAME 		= document.querySelector('#clientName');
 const CLIENT_LASTNAME	= document.querySelector('#clientLastname');

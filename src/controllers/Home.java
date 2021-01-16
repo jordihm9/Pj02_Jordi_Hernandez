@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.sql.Date;
 
 import javax.servlet.ServletException;
@@ -34,8 +35,20 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<Client> clients = null;
+		
+		try {
+			// get all the reservations
+			clients = ClientDAO.select();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		// send to the view the list of clients
+		request.setAttribute("clients", clients);
+		
 		// forward the request to the view
-		request.getRequestDispatcher("/index.html").forward(request, response);
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
 	/**
@@ -46,17 +59,24 @@ public class Home extends HttpServlet {
 			// -------------------
 			// CLIENT PART
 			// -------------------
-			// create a client object with the information from the request
-			Client client = new Client(request);
+			Client client;
+			
+			if (request.getParameter("clientExists") == null) {
+				// create a client object with the information from the request
+				client = new Client(request);
 
-			// check if the client in the database was found searching
-			// in the database if a user with the dni specified exists
-			if (ClientDAO.selectByDni(client.getDni()) == null) {
-				// insert the new client
-				ClientDAO.insert(client);
+				// check if the client in the database was found searching
+				// in the database if a user with the dni specified exists
+				if (ClientDAO.selectByDni(client.getDni()) == null) {
+					// insert the new client
+					ClientDAO.insert(client);
+				}
+
+				// search and get the user in the database to get the id that was given
+				client = ClientDAO.selectByDni(client.getDni());
+			} else {
+				client = ClientDAO.selectById(Integer.parseInt(request.getParameter("client")));
 			}
-			// search and get the user in the database to get the id that was given
-			client = ClientDAO.selectByDni(client.getDni());
 			
 			// -------------------
 			// RESERVATION PART
