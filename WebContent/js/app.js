@@ -48,11 +48,12 @@ function setDefaults() {
 
 	// set the start date and end date the system date
 	DATE.valueAsDate = new Date();
-
 	// set the default for the people
 	PEOPLE.value = 1;
 	// set default price
 	PRICE.value = 0 + " €";
+	// image
+	DST_PREVIEW.src = 'images/no-country.png';
 }
 
 /**
@@ -94,7 +95,7 @@ function addCountriesOptions(continent) {
 	COUNTRIES_SELECT.selectedIndex = 0;
 	// remove/clean the price and the country preview
 	PRICE.value = 0 + " €";
-	DST_PREVIEW.src = '';
+	DST_PREVIEW.src = 'images/no-country.png';
 }
 
 /**
@@ -117,13 +118,13 @@ function updateCountryInfo(continent, country) {
 		// check if the country was found in the array
 		if (country instanceof Object) {
 			// set the price
-			PRICE.value = country.price;
+			PRICE.value = country.price + " €";
 			// set the preview
 			DST_PREVIEW.src = country.image;
 		} else {
 			// remove the price and the country preview
-			PRICE.value = 0;
-			DST_PREVIEW.src = '';
+			PRICE.value = 0 + " €";
+			DST_PREVIEW.src = 'images/no-country.png';
 		}
 	} else {
 		// set the option back to the default
