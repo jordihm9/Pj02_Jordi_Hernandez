@@ -16,6 +16,7 @@ function init() {
 
 		let country = COUNTRIES_SELECT.value; // get the country selected
 		updateCountryInfo(continent, country); // update the country information in document
+		updateTotalPrice();
 	})
 
 	// When a country option has been chosen or changed
@@ -23,16 +24,19 @@ function init() {
 		let continent = CONTINENTS_SELECT.value; // get the continent selected
 		let country = COUNTRIES_SELECT.value; // get the country selected
 		updateCountryInfo(continent, country); // update the country information in document
+		updateTotalPrice();
 	})
 
 	// decrease and increase the number of people
 	document.querySelector('#decrease').addEventListener('click', ()=> {
 		editPeople('decrease');
+		updateTotalPrice();
 	})
 	
 	// decrease and increase the number of people
 	document.querySelector('#increase').addEventListener('click', ()=> {
 		editPeople('increase');
+		updateTotalPrice();
 	})
 }
 
@@ -131,6 +135,14 @@ function updateCountryInfo(continent, country) {
 		// set the option back to the default
 		COUNTRIES_SELECT.value = COUNTRIES_SELECT[0];
 	}
+}
+
+/**
+ * Calculate the total price, depending on the price
+ */
+function updateTotalPrice() {
+	// calculate and update the value
+	TOTAL_PRICE.value = PRICE.value * PEOPLE.value + " €";
 }
 
 /**
