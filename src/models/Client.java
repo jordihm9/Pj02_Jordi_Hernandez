@@ -1,5 +1,8 @@
 package models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 
 public class Client {
@@ -34,6 +37,14 @@ public class Client {
 		setLastname(request.getParameter("clientLastname"));
 		setDni(request.getParameter("dni"));
 		setPhone(request.getParameter("phone"));
+	}
+
+	public Client(ResultSet rs) throws SQLException {
+		this.id = rs.getInt("id");
+		setDni(rs.getString("dni"));
+		setName(rs.getString("name"));
+		setLastname(rs.getString("lastname"));
+		setPhone(rs.getString("phone"));
 	}
 
 	// ------------------

@@ -2,6 +2,8 @@ package models;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Reservation {
 	private Date date;
@@ -29,6 +31,15 @@ public class Reservation {
 		setCountryDst(request.getParameter("countryDst"));
 		setPeople(Integer.parseInt(request.getParameter("people")));
 		setPrice(Double.parseDouble(request.getParameter("price")));
+	}
+	
+	public Reservation(ResultSet rs, Client client) throws SQLException {
+		setContinentDst(rs.getString("continent"));
+		setCountryDst(rs.getString("country"));
+		setDate(rs.getDate("date"));
+		setPeople(rs.getInt("people"));
+		setPrice(rs.getDouble("price"));
+		setClient(client);
 	}
 
 	// ------------------
