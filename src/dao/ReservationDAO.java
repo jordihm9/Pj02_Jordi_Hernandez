@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 
+import models.Client;
 import models.Reservation;
 
 public class ReservationDAO {
@@ -47,7 +48,7 @@ public class ReservationDAO {
 	 * @throws SQLException
 	 */
 	public static ArrayList<Reservation> select() throws SQLException {
-		ArrayList<Reservation> reservations = null;
+		ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 		Connection con = null;
 		Statement select = null;
 		ResultSet reservationsRs = null;
@@ -58,22 +59,15 @@ public class ReservationDAO {
 			// create the statement
 			select = con.createStatement();
 			// execute and get the result that returns the select
-			reservationsRs = select.executeQuery("SELECT * from `reservations`");
+			reservationsRs = select.executeQuery(
+					"SELECT * FROM `reservations` r INNER JOIN `clients` c ON r.`client_id` = c.`id`"
+					);
 			
 			// loop over each result while there are results
 			while(reservationsRs.next()) {
-				String continent = reservationsRs.getString("continent");
-				String country = reservationsRs.getString("country");
-				Date date = reservationsRs.getDate("date");
-				int people = reservationsRs.getInt("people");
-				double price = reservationsRs.getDouble("price");
-				int client_id = reservationsRs.getInt("client_id");
-				
-				// get the client
-				models.Client client = ClientDAO.selectById(client_id);
 				
 				// create and add the reservation to the list
-				reservations.add(new Reservation(continent, country, date, people, price, client));
+				reservations.add(new Reservation(reservationsRs, new Client(reservationsRs)));
 			}
 		}
 		finally {

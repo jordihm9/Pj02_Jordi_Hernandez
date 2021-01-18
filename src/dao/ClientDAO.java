@@ -60,15 +60,8 @@ public class ClientDAO {
 			
 			// loop over each result
 			while (clientsRs.next()) {
-				// get the values
-				int id			= clientsRs.getInt("id");
-				String dni		= clientsRs.getString("dni");
-				String name		= clientsRs.getString("name");
-				String lastname	= clientsRs.getString("lastname");
-				String phone	= clientsRs.getString("phone");
-				
 				// create the object and add it to the list
-				clients.add(new Client(id, dni, name, lastname, phone));
+				clients.add(new Client(clientsRs));
 			}
 		}
 		finally {
@@ -103,14 +96,8 @@ public class ClientDAO {
 						
 			// check there is a result
 			if (clientRs.next()) {
-				// get the values
-				String dni			= clientRs.getString("dni");
-				String name			= clientRs.getString("name");
-				String lastname		= clientRs.getString("lastname");
-				String phone		= clientRs.getString("phone");
-				
 				// create the object client
-				client = new Client(id, dni, name, lastname, phone);
+				client = new Client(clientRs);
 			} 
 		}
 		finally {
@@ -145,14 +132,8 @@ public class ClientDAO {
 						
 			// check there is a result
 			if (clientRs.next()) {
-				// get the values
-				int id			= clientRs.getInt("id");
-				String name		= clientRs.getString("name");
-				String lastname	= clientRs.getString("lastname");
-				String phone	= clientRs.getString("phone");
-				
 				// create the object client
-				client = new Client(id, dni, name, lastname, phone);
+				client = new Client(clientRs);
 			} 
 		}
 		finally {
