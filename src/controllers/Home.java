@@ -36,16 +36,20 @@ public class Home extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Client> clients = null;
+		ArrayList<Reservation> reservations = null;
 		
 		try {
-			// get all the reservations
+			// get all the clients
 			clients = ClientDAO.select();
+			// get all the reservations
+			reservations = ReservationDAO.select();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		// send to the view the list of clients
+		// send to the view the list of clients and reservations
 		request.setAttribute("clients", clients);
+		request.setAttribute("reservations", reservations);
 		
 		// forward the request to the view
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -86,13 +90,16 @@ public class Home extends HttpServlet {
 			reservation.setClient(client); // set the client that made the reservation (has id set)
 			// insert to the database a new reservation with the information from the request
 			ReservationDAO.insert(reservation);
+			
+			// after all return to the view
+			response.sendRedirect("");
 		}	
 		catch (SQLException e) {
 			e.printStackTrace();
+			// redireccio error
 		}
 		
-		// after all return to the view
-		doGet(request, response);
+		// doGet(request, response);
 	}
 
 }

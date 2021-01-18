@@ -61,7 +61,7 @@
 							</select>
 						</div>
 					</div>
-					<br><hr>
+					<br><hr><br>
 					<div id="new-client">
 						<div class="inputs-group">
 							<div class="input required">
@@ -131,7 +131,33 @@
 		</section>
 
 		<!-- LIST OF RESERVATIONS -->
-		<section id="reservation-list"></section>
+		<section id="reservation-list">
+			<c:choose>
+				<c:when test="${!reservations.isEmpty()}">
+					<c:forEach var="reservation" items="${reservations}">
+						<div class="reservation">
+							<ul>
+								<li><span class="bold">Date:</span> ${reservation.date}</li>
+								<li><span class="bold">Destination:</span> ${reservation.countryDst}, ${reservation.continentDst}</li>
+								<li>
+									<span class="bold">Client:</span>
+									<ul>
+										<li><span class="bold">Dni:</span> ${reservation.client.dni}</li>
+										<li><span class="bold">Name:</span> ${reservation.client.lastname}, ${reservation.client.name}</li>
+										<li><span class="bold">Phone:</span> ${reservation.client.phone}</li>
+									</ul>
+								</li>
+								<li><span class="bold">People:</span> ${reservation.people}</li>
+								<li><span class="bold">Price:</span> ${reservation.price} €</li>
+							</ul>
+						</div>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<!-- NO RESERVATIONS -->
+				</c:otherwise>
+			</c:choose>
+		</section>
 
 	</main>
 
