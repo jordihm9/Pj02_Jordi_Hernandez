@@ -18,7 +18,7 @@ body {
 }
 
 header {
-	width: 100vw;
+	width: 100%;
 	background-color: var(--accent-color);
 	color: var(--dark-color);
 }
@@ -71,6 +71,18 @@ input.error {
 
 .btn:hover {
 	background: var(--dark-color-light);
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.no-bullets {
+	list-style-type: none;
+}
+
+.rounded {
+	border-radius: 10px;
 }
 
 /* FORM STYLING */
@@ -223,4 +235,21 @@ select {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
+}
+
+/* LIST OF RESERVATIONS */
+#reservation-list {
+	margin-top: 40px;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.reservation {
+	width: 220px;
+	height: 320px;
+	padding: 1.5rem 1rem;
+	margin: 0 1.5rem 2rem 1.5rem;
+	line-height: 1.7rem;
+	box-shadow: 0px 0px 3px var(--dark-color-light);
 }

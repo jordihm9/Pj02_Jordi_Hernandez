@@ -42,7 +42,7 @@
 		<section id="reservation-form">
 			<form method="post">
 				<!-- CLIENT INFORMATION -->
-				<fieldset id="client-info">
+				<fieldset id="client-info" class="rounded">
 					<legend>Client Information</legend>
 					<div>
 						<div>
@@ -54,10 +54,17 @@
 						<div class="input required">
 							<label for="client">Client</label>
 							<select name="client" id="client">
-								<option disabled>-- Select existing client --</option>
-								<c:forEach var="client" items="${clients}">
-									<option value="${client.id}">${client.lastname}, ${client.name}</option>
-								</c:forEach>
+								<c:choose>
+									<c:when test="${!clients.isEmpty()}">
+										<option disabled>-- Select existing client --</option>
+										<c:forEach var="client" items="${clients}">
+											<option value="${client.id}">${client.lastname}, ${client.name}</option>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<option value="null">-- No Clients --</option>
+									</c:otherwise>
+								</c:choose>
 							</select>
 						</div>
 					</div>
@@ -87,7 +94,7 @@
 				</fieldset>
 
 				<!-- RESERVATION INFORMATION -->
-				<fieldset id="reservation-info">
+				<fieldset id="reservation-info" class="rounded">
 					<legend>Reservation Information</legend>
 					<div>
 						<div class="input required">
@@ -125,7 +132,7 @@
 
 				<!-- SUBMIT -->
 				<div id="submit">
-					<input type="submit" name="saveReservation" value="Save" class="btn">
+					<input type="submit" name="saveReservation" value="Save" class="btn rounded">
 				</div>
 			</form>
 		</section>
@@ -135,14 +142,20 @@
 			<c:choose>
 				<c:when test="${!reservations.isEmpty()}">
 					<c:forEach var="reservation" items="${reservations}">
-						<div class="reservation">
-							<ul>
+						<div class="reservation rounded">
+							<ul class="no-bullets">
 								<li><span class="bold">Date:</span> ${reservation.date}</li>
-								<li><span class="bold">Destination:</span> ${reservation.countryDst}, ${reservation.continentDst}</li>
+								<li>
+									<!-- <span class="bold">Destination:</span> -->
+									<ul class="no-bullets">
+										<li><span class="bold">Continent:</span> ${reservation.continentDst}</li>
+										<li><span class="bold">Country:</span> ${reservation.countryDst}</li>
+									</ul>
+								</li>
 								<li>
 									<span class="bold">Client:</span>
-									<ul>
-										<li><span class="bold">Dni:</span> ${reservation.client.dni}</li>
+									<ul class="no-bullets">
+										<li><span class="bold">DNI:</span> ${reservation.client.dni}</li>
 										<li><span class="bold">Name:</span> ${reservation.client.lastname}, ${reservation.client.name}</li>
 										<li><span class="bold">Phone:</span> ${reservation.client.phone}</li>
 									</ul>
