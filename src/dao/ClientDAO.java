@@ -5,6 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import exceptions.IncorrectFormat;
+import exceptions.RequiredException;
+
 import java.sql.Connection;
 
 import models.Client;
@@ -44,7 +48,7 @@ public class ClientDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static ArrayList<Client> select() throws SQLException {
+	public static ArrayList<Client> select() throws SQLException, RequiredException, IncorrectFormat {
 		ArrayList<Client> clients = new ArrayList<Client>();
 		Connection con = null;
 		Statement select = null;
@@ -78,7 +82,7 @@ public class ClientDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static Client selectById(int id) throws SQLException {
+	public static Client selectById(int id) throws SQLException, RequiredException, IncorrectFormat {
 		Client client = null;
 		Connection con = null;
 		PreparedStatement select = null;
@@ -114,7 +118,7 @@ public class ClientDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static Client selectByDni(String dni) throws SQLException {
+	public static Client selectByDni(String dni) throws SQLException, RequiredException, IncorrectFormat {
 		Client client = null;
 		Connection con = null;
 		PreparedStatement select = null;

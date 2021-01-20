@@ -4,6 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import exceptions.IncorrectFormat;
+import exceptions.RequiredException;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
@@ -46,8 +50,9 @@ public class ReservationDAO {
 	 * Select all the reservations
 	 * @return
 	 * @throws SQLException
+	 * @throws RequiredException 
 	 */
-	public static ArrayList<Reservation> select() throws SQLException {
+	public static ArrayList<Reservation> select() throws SQLException, RequiredException, IncorrectFormat {
 		ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 		Connection con = null;
 		Statement select = null;

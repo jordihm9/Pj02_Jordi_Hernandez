@@ -15,6 +15,8 @@ import models.Client;
 import models.Reservation;
 import dao.ClientDAO;
 import dao.ReservationDAO;
+import exceptions.IncorrectFormat;
+import exceptions.RequiredException;
 
 /**
  * Servlet implementation class Home
@@ -43,7 +45,11 @@ public class Home extends HttpServlet {
 			clients = ClientDAO.select();
 			// get all the reservations
 			reservations = ReservationDAO.select();
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (RequiredException | IncorrectFormat e) {
 			e.printStackTrace();
 		}
 		
@@ -91,15 +97,16 @@ public class Home extends HttpServlet {
 			// insert to the database a new reservation with the information from the request
 			ReservationDAO.insert(reservation);
 			
-			// after all return to the view
-			response.sendRedirect("");
-		}	
+		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			// redireccio error
+		}
+		catch (RequiredException | IncorrectFormat e) {
+			e.printStackTrace();
 		}
 		
-		// doGet(request, response);
+		// after all return to the view
+		response.sendRedirect("/Pj02_Jordi_Hernandez");
 	}
 
 }

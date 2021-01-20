@@ -1,6 +1,9 @@
 package models;
 
 import javax.servlet.http.HttpServletRequest;
+
+import exceptions.RequiredException;
+
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +19,7 @@ public class Reservation {
 	// ------------------
 	// CONSTRUCTOR
 	// ------------------
-	public Reservation(String continentDst, String countryDst, Date date, int people, double price, Client client) {
+	public Reservation(String continentDst, String countryDst, Date date, int people, double price, Client client) throws RequiredException {
 		setContinentDst(continentDst);
 		setCountryDst(countryDst);
 		setDate(date);
@@ -25,7 +28,7 @@ public class Reservation {
 		setClient(client);
 	}
 
-	public Reservation(HttpServletRequest request) {
+	public Reservation(HttpServletRequest request) throws RequiredException {
 		setDate(Date.valueOf(request.getParameter("date")));
 		setContinentDst(request.getParameter("continentDst"));
 		setCountryDst(request.getParameter("countryDst"));
@@ -33,7 +36,7 @@ public class Reservation {
 		setPrice(Double.parseDouble(request.getParameter("price")));
 	}
 	
-	public Reservation(ResultSet rs, Client client) throws SQLException {
+	public Reservation(ResultSet rs, Client client) throws SQLException, RequiredException {
 		setContinentDst(rs.getString("continent"));
 		setCountryDst(rs.getString("country"));
 		setDate(rs.getDate("date"));
@@ -48,11 +51,11 @@ public class Reservation {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public void setContinentDst(String continentDst) {
-		this.continentDst = continentDst;
+	public void setContinentDst(String continentDst) throws RequiredException {
+		this.continentDst = Validation.required(continentDst, "Continent");
 	}
-	public void setCountryDst(String countryDst) {
-		this.countryDst = countryDst;
+	public void setCountryDst(String countryDst) throws RequiredException {
+		this.countryDst = Validation.required(countryDst, "Country");
 	}
 	public void setPeople(int people) {
 		this.people = people;
