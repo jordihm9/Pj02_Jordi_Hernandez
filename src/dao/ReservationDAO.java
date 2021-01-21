@@ -83,4 +83,29 @@ public class ReservationDAO {
 		
 		return reservations;
 	}
+	
+	/**
+	 * Delete a reservation by id
+	 * @param id
+	 * @throws SQLException
+	 */
+	public static void delete(int id) throws SQLException {
+		Connection con = null;
+		PreparedStatement delete = null;
+		
+		try {
+			// get the connection
+			con = ConnectDB.connect();
+			// create the prepared statement
+			delete = con.prepareStatement("DELETE FROM `reservations` WHERE `id` = ?");
+			// set the values
+			delete.setInt(1, id);
+			// execute the statement
+			delete.executeUpdate();
+		}
+		finally {
+			con.close();
+			delete.close();
+		}
+	}
 }
