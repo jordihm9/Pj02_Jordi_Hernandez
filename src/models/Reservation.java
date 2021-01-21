@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Reservation {
+	private int id;
 	private Date date;
 	private String continentDst;
 	private String countryDst;
@@ -37,6 +38,7 @@ public class Reservation {
 	}
 	
 	public Reservation(ResultSet rs, Client client) throws SQLException, RequiredException {
+		this.id = rs.getInt("id");
 		setContinentDst(rs.getString("continent"));
 		setCountryDst(rs.getString("country"));
 		setDate(rs.getDate("date"));
@@ -70,6 +72,9 @@ public class Reservation {
 	// ------------------
 	// GETTERS
 	// ------------------
+	public int getId() {
+		return this.id;
+	}
 	public Date getDate() {
 		return this.date;
 	}
