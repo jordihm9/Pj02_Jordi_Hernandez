@@ -40,7 +40,7 @@
 	<main>
 		<!-- RESERVATION FORM -->
 		<section id="reservation-form">
-			<form method="post">
+			<form action="reservation/create" method="post">
 				<!-- CLIENT INFORMATION -->
 				<fieldset id="client-info" class="rounded">
 					<legend>Client Information</legend>
