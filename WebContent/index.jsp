@@ -143,6 +143,12 @@
 				<c:when test="${!reservations.isEmpty()}">
 					<c:forEach var="reservation" items="${reservations}">
 						<div class="reservation rounded">
+							<form action="reservation/remove" method="post">
+								<input type="hidden" name="id" value="${reservation.id}">
+								<button type="submit" class="btn delete rounded">
+									<img src="images/trash.svg" alt="delete">
+								</button>
+							</form>
 							<ul class="no-bullets">
 								<li><span class="bold">Date:</span> ${reservation.date}</li>
 								<li>
