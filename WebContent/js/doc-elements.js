@@ -14,6 +14,7 @@ const DATE				= document.querySelector('#date');
 const CONTINENTS_SELECT	= document.querySelector('#continentDst');
 const COUNTRIES_SELECT 	= document.querySelector('#countryDst');
 const PEOPLE			= document.querySelector('#people');
+const DISCOUNT			= document.querySelector('#discount');
 const PRICE				= document.querySelector('#price');
 const TOTAL_PRICE		= document.querySelector('#total-price');
 const DST_PREVIEW		= document.querySelector('#destination-preview img');

@@ -70,8 +70,10 @@ function setDefaults() {
 	DATE.valueAsDate = new Date();
 	// set the default for the people
 	PEOPLE.value = 1;
+	// set the default discount
+	DISCOUNT.value = 0;
 	// set default price
-	TOTAL_PRICE.value = "0 €";
+	formatPrice(0);
 	// image
 	DST_PREVIEW.src = 'images/no-country.png';
 }
@@ -114,7 +116,7 @@ function addCountriesOptions(continent) {
 	// select the default option as active
 	COUNTRIES_SELECT.selectedIndex = 0;
 	// remove/clean the price and the country preview
-	TOTAL_PRICE.value = "0 €";
+	formatPrice(0);
 	DST_PREVIEW.src = 'images/no-country.png';
 }
 
@@ -138,13 +140,12 @@ function updateCountryInfo(continent, country) {
 		// check if the country was found in the array
 		if (country instanceof Object) {
 			// set the price
-			TOTAL_PRICE.value = country.price + " €";
 			PRICE.value = country.price;
 			// set the preview
 			DST_PREVIEW.src = country.image;
 		} else {
 			// remove the price and the country preview
-			TOTAL_PRICE.value = "0 €";
+			formatPrice(0);
 			DST_PREVIEW.src = 'images/no-country.png';
 		}
 	} else {
@@ -154,11 +155,24 @@ function updateCountryInfo(continent, country) {
 }
 
 /**
- * Calculate the total price, depending on the price
+ * Calculate the total price, depending on the price, people and discount
  */
 function updateTotalPrice() {
-	// calculate and update the value
-	TOTAL_PRICE.value = PRICE.value * PEOPLE.value + " €";
+	// get the values from the inputs and cast them to type Number
+	let price = Number(PRICE.value);
+	let people = Number(PEOPLE.value);
+	let discount = Number(DISCOUNT.value);
+	let total_price;
+	
+	// check if the discount is 0
+	if (discount === 0) {
+		total_price = price * people;
+	} else {
+		total_price = ((100 - discount)/100) * (price * people);
+	}
+
+	// format the total price with 2 digits and euro sign
+	formatPrice(total_price);
 }
 
 /**
@@ -195,4 +209,12 @@ function editPeople(operation) {
 
 	// check that minim number posible is 1
 	if (people >= 1) PEOPLE.value = people; // change with the new value
+}
+
+/**
+ * Update the total price input with 2 decimals and euro sign
+ * @param {Number} price 
+ */
+function formatPrice(price) {
+	TOTAL_PRICE.value = price.toLocaleString('es-ES', { style: "currency", currency: "EUR" });
 }

@@ -27,15 +27,16 @@ public class ReservationDAO {
 			// get the connection
 			con = ConnectDB.connect();
 			// prepare the statement
-			insert = (PreparedStatement) con.prepareStatement("INSERT INTO `reservations` (`continent`, `country`, `date`, `people`, `price`, `client_id`)"
-					+ "VALUES (?, ?, ?, ?, ?, ?)");
+			insert = (PreparedStatement) con.prepareStatement("INSERT INTO `reservations` (`continent`, `country`, `date`, `people`, `discount`, `price`, `client_id`)"
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?)");
 			// set the values for the prepared statement
 			insert.setString(1, reservation.getContinentDst());
 			insert.setString(2, reservation.getCountryDst());
 			insert.setDate(3, reservation.getDate());
 			insert.setInt(4, reservation.getPeople());
-			insert.setDouble(5, reservation.getPrice());
-			insert.setInt(6, reservation.getClient().getId());
+			insert.setDouble(5, reservation.getDiscount());
+			insert.setDouble(6, reservation.getPrice());
+			insert.setInt(7, reservation.getClient().getId());
 			//execute the prepared statement
 			insert.executeUpdate();
 		}

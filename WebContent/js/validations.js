@@ -77,6 +77,19 @@ COUNTRIES_SELECT.addEventListener('blur', ()=> {
 	}
 })
 
+
+DISCOUNT.addEventListener('change', ()=> {
+	try {
+		checkDiscount();
+		updateTotalPrice();
+		DISCOUNT.classList.remove('error');
+	}
+	catch (error) {
+		console.log(error.message);
+		DISCOUNT.classList.add('error');
+	}	
+})
+
 /**
  * Check if the value from the element given is empty or not.
  * @param {object} e element from the document
@@ -131,4 +144,22 @@ function checkDestination() {
 		'continent': checkRequired(CONTINENTS_SELECT, 'Continent'),
 		'country': checkRequired(COUNTRIES_SELECT, 'Country'),
 	}
+}
+
+/**
+ * Check if the discount is a number and is not less than 0 or bigger than 50
+ * @return {Number} discount
+ */
+function checkDiscount() {
+	// get the value and cast it to type Number
+	let discount = Number(checkRequired(DISCOUNT, "Discount"));
+	// check is a number
+	if (isNaN(discount)) {
+		throw new Error("Discount must be a number");
+	}
+	if (discount < 0 || discount > 50) {
+		throw new Error("Cannot apply a negative discount or bigger than 50%");
+	}
+
+	return discount;
 }

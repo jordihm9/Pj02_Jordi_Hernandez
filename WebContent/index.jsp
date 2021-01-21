@@ -110,6 +110,10 @@
 								</div>
 							</div>
 						</div>
+						<div class="input required">
+							<label>Discount</label>
+							<input type="text" name="discount" id="discount" autocomplete="off">
+						</div>
 						<div class="input">
 							<div id="numOfPeople" class="inputs-group">
 								<div id="decrease" class="btn">-</div>
@@ -159,7 +163,7 @@
 									</ul>
 								</li>
 								<li>
-									<span class="bold">Client:</span>
+									<!-- <span class="bold">Client:</span> -->
 									<ul class="no-bullets">
 										<li><span class="bold">DNI:</span> ${reservation.client.dni}</li>
 										<li><span class="bold">Name:</span> ${reservation.client.lastname}, ${reservation.client.name}</li>
@@ -167,6 +171,7 @@
 									</ul>
 								</li>
 								<li><span class="bold">People:</span> ${reservation.people}</li>
+								<li><span class="bold">Discount:</span> ${reservation.discount} %</li>
 								<li><span class="bold">Price:</span> ${reservation.price} €</li>
 							</ul>
 						</div>

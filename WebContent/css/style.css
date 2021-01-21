@@ -155,7 +155,7 @@ select {
 }
 
 /* add an asterik after */
-.required label:after {
+.required > label:after {
 	content: ' *';
 	color: #ff0000;
 }
