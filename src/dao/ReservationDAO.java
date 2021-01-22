@@ -66,7 +66,7 @@ public class ReservationDAO {
 			select = con.createStatement();
 			// execute and get the result that returns the select
 			reservationsRs = select.executeQuery(
-					"SELECT * FROM `reservations` r INNER JOIN `clients` c ON r.`client_id` = c.`id`"
+					"SELECT * FROM `reservations` r INNER JOIN `clients` c ON r.`client_id` = c.`id` ORDER BY r.`date` ASC"
 					);
 			
 			// loop over each result while there are results

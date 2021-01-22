@@ -60,7 +60,7 @@ public class ClientDAO {
 			// create the statement
 			select = con.createStatement();
 			// execute the statement
-			clientsRs = select.executeQuery("SELECT * from `clients`");
+			clientsRs = select.executeQuery("SELECT * FROM `clients` ORDER BY `lastname` ASC, `name` ASC");
 			
 			// loop over each result
 			while (clientsRs.next()) {
