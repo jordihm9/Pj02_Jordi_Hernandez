@@ -8,6 +8,7 @@ import exceptions.RequiredException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 
 public class Reservation {
 	private int id;
@@ -78,7 +79,7 @@ public class Reservation {
 	}
 	public void setPrice(double price) {
 		if (this.discount != 0) {
-			this.price = ((100 - this.discount) / 100) * (price * this.people);
+			this.price = Double.parseDouble(new DecimalFormat("###.##").format(((100 - this.discount) / 100.0f) * (price * this.people)));
 		} else {
 			this.price = price * this.people;
 		}
