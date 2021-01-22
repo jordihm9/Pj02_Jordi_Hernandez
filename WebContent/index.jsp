@@ -40,7 +40,7 @@
 	<main>
 		<!-- RESERVATION FORM -->
 		<section id="reservation-form">
-			<form action="reservation/create" method="post">
+			<form action="reservation/create" method="post" onsubmit="return validateAll()">
 				<!-- CLIENT INFORMATION -->
 				<fieldset id="client-info" class="rounded">
 					<legend>Client Information</legend>

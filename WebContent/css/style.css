@@ -53,7 +53,7 @@ main {
 	cursor: pointer;
 }
 
-input.error {
+.error {
 	border-color: #ff0000 !important;
 }
 

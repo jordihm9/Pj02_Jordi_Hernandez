@@ -2,8 +2,8 @@
 
 CLIENT_NAME.addEventListener('blur', ()=> {
 	try {
-		checkRequired(CLIENT_NAME, 'Name');
 		CLIENT_NAME.classList.remove('error'); // remove the class 'error'
+		return checkName();
 	}
 	catch (error) {
 		console.log(error.message); // print error in console
@@ -13,8 +13,8 @@ CLIENT_NAME.addEventListener('blur', ()=> {
 
 CLIENT_LASTNAME.addEventListener('blur', ()=> {
 	try {
-		checkRequired(CLIENT_LASTNAME, 'Lastname');
 		CLIENT_LASTNAME.classList.remove('error'); // remove the class 'error'
+		return checkLastname();
 	}
 	catch (error) {
 		console.log(error.message); // print error in console
@@ -24,8 +24,8 @@ CLIENT_LASTNAME.addEventListener('blur', ()=> {
 
 DNI.addEventListener('blur', ()=> {
 	try {
-		checkDNI();
 		DNI.classList.remove('error');
+		return checkDNI();
 	}
 	catch (error) {
 		console.log(error.message);
@@ -35,8 +35,8 @@ DNI.addEventListener('blur', ()=> {
 
 PHONE.addEventListener('blur', ()=> {
 	try {
-		checkPhone();
 		PHONE.classList.remove('error');
+		return checkPhone();
 	}
 	catch (error) {
 		console.log(error.message);
@@ -46,8 +46,8 @@ PHONE.addEventListener('blur', ()=> {
 
 DATE.addEventListener('blur', ()=> {
 	try {
-		checkRequired(DATE, 'Date');
 		DATE.classList.remove('error');
+		return checkDate();
 	}
 	catch (error) {
 		console.log(error.message)
@@ -57,8 +57,8 @@ DATE.addEventListener('blur', ()=> {
 
 CONTINENTS_SELECT.addEventListener('blur', ()=> {
 	try {
-		checkRequired(CONTINENTS_SELECT, 'Continent');
 		CONTINENTS_SELECT.classList.remove('error');
+		return checkContinent();
 	}
 	catch (error) {
 		console.log(error.message);
@@ -68,8 +68,8 @@ CONTINENTS_SELECT.addEventListener('blur', ()=> {
 
 COUNTRIES_SELECT.addEventListener('blur', ()=> {
 	try {
-		checkRequired(COUNTRIES_SELECT, 'Country');
 		COUNTRIES_SELECT.classList.remove('error');
+		return checkCountry();
 	}
 	catch (error) {
 		console.log(error.message);
@@ -80,15 +80,37 @@ COUNTRIES_SELECT.addEventListener('blur', ()=> {
 
 DISCOUNT.addEventListener('change', ()=> {
 	try {
-		checkDiscount();
-		updateTotalPrice();
 		DISCOUNT.classList.remove('error');
+		return checkDiscount();
 	}
 	catch (error) {
 		console.log(error.message);
 		DISCOUNT.classList.add('error');
 	}	
 })
+
+/**
+ * Check every input from the form
+ * If the value is correct keep the value
+ * @return {boolean} if all the inputs follow the requirements
+ */
+function validateAll() {
+	let allOk = true;
+
+	if (!CLIENT_EXISTS.checked) {
+		try { CLIENT_NAME.value 	= checkName(); 		} catch (error) { CLIENT_NAME.classList.add('error'); 		allOk = false; }
+		try { CLIENT_LASTNAME.value = checkLastname(); 	} catch (error) { CLIENT_LASTNAME.classList.add('error'); 	allOk = false; }
+		try { DNI.value 			= checkDNI() 		} catch (error) { DNI.classList.add('error'); 				allOk = false; }
+		try { PHONE.value 			= checkPhone(); 	} catch (error) { PHONE.classList.add('error'); 			allOk = false; }
+	}
+
+	try { DATE.valueAsDate 			= checkDate(); 		} catch (error) { DATE.classList.add('error'); 				allOk = true; }
+	try { CONTINENTS_SELECT.value 	= checkContinent(); } catch (error) { CONTINENTS_SELECT.classList.add('error'); allOk = false; }
+	try { COUNTRIES_SELECT.value 	= checkCountry(); 	} catch (error) { COUNTRIES_SELECT.classList.add('error');	allOk = false; }
+	try { DISCOUNT.value 			= checkDiscount(); 	} catch (error) { DISCOUNT.classList.add('error'); 			allOk = false; }
+	
+	return allOk;
+}
 
 /**
  * Check if the value from the element given is empty or not.
@@ -99,6 +121,22 @@ DISCOUNT.addEventListener('change', ()=> {
 function checkRequired(e, name) {
     if (e.value === '' || e.value === undefined) throw new Error(name + " is required.");
     return e.value;
+}
+
+/**
+ * Check the name is not empty
+ * @return {string} name
+ */
+function checkName() {
+	return checkRequired(CLIENT_NAME, 'Name');
+}
+
+/**
+ * Check the lastname is not empty
+ * @return {string} lastname
+ */
+function checkLastname() {
+	return checkRequired(CLIENT_LASTNAME, 'Name');
 }
 
 /**
@@ -136,16 +174,29 @@ function checkPhone() {
 }
 
 /**
- * Check if both destination select inputs are not empty (continent and country)
- * @return {object} object with 2 properties: continent and country
+ * Check the date is not empty
+ * @return {Date} date
  */
-function checkDestination() {
-	return {
-		'continent': checkRequired(CONTINENTS_SELECT, 'Continent'),
-		'country': checkRequired(COUNTRIES_SELECT, 'Country'),
-	}
+function checkDate() {
+	checkRequired(DATE, 'Date');
+	return DATE.valueAsDate;
 }
 
+/**
+ * Check if X is not empty
+ * @return {string} continent
+ */
+function checkContinent() {
+	return checkRequired(CONTINENTS_SELECT, "Continent");
+}
+
+/**
+ * Check if X is not empty
+ * @return {string} country
+ */
+function checkCountry() {
+	return checkRequired(COUNTRIES_SELECT, "Country");
+}
 /**
  * Check if the discount is a number and is not less than 0 or bigger than 50
  * @return {Number} discount
@@ -161,5 +212,6 @@ function checkDiscount() {
 		throw new Error("Cannot apply a negative discount or bigger than 50%");
 	}
 
+	updateTotalPrice();
 	return discount;
 }
