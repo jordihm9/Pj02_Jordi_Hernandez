@@ -104,7 +104,7 @@ function validateAll() {
 		try { PHONE.value 			= checkPhone(); 	} catch (error) { PHONE.classList.add('error'); 			allOk = false; }
 	}
 
-	try { DATE.valueAsDate 			= checkDate(); 		} catch (error) { DATE.classList.add('error'); 				allOk = true; }
+	try { DATE.valueAsDate 			= checkDate(); 		} catch (error) { DATE.classList.add('error'); 				allOk = false; }
 	try { CONTINENTS_SELECT.value 	= checkContinent(); } catch (error) { CONTINENTS_SELECT.classList.add('error'); allOk = false; }
 	try { COUNTRIES_SELECT.value 	= checkCountry(); 	} catch (error) { COUNTRIES_SELECT.classList.add('error');	allOk = false; }
 	try { DISCOUNT.value 			= checkDiscount(); 	} catch (error) { DISCOUNT.classList.add('error'); 			allOk = false; }
@@ -179,7 +179,13 @@ function checkPhone() {
  */
 function checkDate() {
 	checkRequired(DATE, 'Date');
-	return DATE.valueAsDate;
+	// get the value as Date data type
+	let date = DATE.valueAsDate;
+	// check if the date is before than the actual date
+	if (date < new Date()) {
+		throw new Error("Date cannot be the past.");
+	}
+	return date;
 }
 
 /**
